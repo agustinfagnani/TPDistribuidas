@@ -1,6 +1,8 @@
 package dao;
 
-import hbt.HibernateUtil;
+
+
+import hbt.HbSessionFactory;
 
 import org.hibernate.Session;
 
@@ -16,7 +18,7 @@ public class UsuarioDAO {
 	}
 	
 	public void save(UsuarioEntity usu){
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HbSessionFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 		session.persist(usu);
 		

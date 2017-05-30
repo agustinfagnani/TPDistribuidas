@@ -1,14 +1,10 @@
 package dao;
 
 
-import hbt.HibernateUtil;
-
+import hbt.HbSessionFactory;
 import java.util.List;
-
 import modelo.Cliente;
-
 import org.hibernate.Session;
-
 import Exceptions.ClienteNoExisteException;
 import entities.ClienteEntity;
 
@@ -31,7 +27,7 @@ public class ClienteDAO {
 	
 	
 	public void save(Cliente cliente){
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HbSessionFactory.getSessionFactory().openSession();
 				
 		session.beginTransaction();
 		
@@ -77,7 +73,7 @@ public class ClienteDAO {
 	
 	
 	public void pruebaSave(ClienteEntity cliente){
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HbSessionFactory.getSessionFactory().openSession();
 		session.beginTransaction();
 		
 		session.persist(cliente);
