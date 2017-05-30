@@ -92,4 +92,10 @@ public class Controlador {
 		return sucursal.newPedidoCliente(cliente, pedidos);
 	}
 	
+	public void pedidoAprobado(int nroPedido,int nroSucursal) throws SucursalNoExisteException{
+		int nroCliente= obtenerSucursal(nroSucursal).pedidoAprobado(nroPedido);
+		
+		//busca al cliente e informa que el pedido esta aprobado
+	}
+	
 }

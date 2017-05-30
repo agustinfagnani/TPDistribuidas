@@ -37,6 +37,20 @@ public class PedidoCliente {
 	public int getNroPedido() {
 		return nroPedido;
 	}
+	public void cambiarEstado(String estado){
+		this.estado=estado;
+	}
 	
+	public boolean sosPedido(int nroPedido){
+		return this.nroPedido == nroPedido;
+	}
+	
+	public void saveMe(){
+		// guardar el pedido a la base de datos
+	}
+	
+	public int getNroCliente(){
+		return cliente.getNroCliente();
+	}
 	
 }

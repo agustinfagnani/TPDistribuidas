@@ -10,11 +10,11 @@ public class ItemPrenda {
 	public ItemPrenda(Prenda prenda, String talle,String color, int cantidad) throws TalleYColorException {
 		super();
 		this.prenda = prenda;
-		
 		this.talleYColor=prenda.getTalleYColor(talle, color);
-		
 		this.cantidad = cantidad;
+		
 	}
+	
 	
 	
 	

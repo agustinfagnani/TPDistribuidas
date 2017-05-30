@@ -5,9 +5,11 @@ import java.util.List;
 
 import modelo.Cliente;
 import modelo.PedidoCliente;
+import Enum.EstadosPedido;
 import Exceptions.ClienteNoExisteException;
 import Exceptions.TalleYColorException;
 import controlador.Controlador;
+import dao.PedidoClienteDAO;
 import dto.ItemPrendaDTO;
 
 public class Sucursal {
@@ -42,10 +44,26 @@ public class Sucursal {
 			pedido.addPrendaPedida(item);
 		}
 		this.pedidos.add(pedido);
-		//save pedido¿?
 		return pedido.getNroPedido();
 	}
 	
+	public PedidoCliente buscarPedido(int nroPedido){
+		
+		for (PedidoCliente pedido : pedidos) {
+			if(pedido.sosPedido(nroPedido)){
+				return pedido;
+			}
+		}
+		
+		return PedidoClienteDAO.getInstance().findPedidoByNroPedido(nroPedido);
+	}
 	
+	
+	public int pedidoAprobado(int nroPedido){
+		PedidoCliente pedidoCliente = buscarPedido(nroPedido);
+		pedidoCliente.cambiarEstado(EstadosPedido.APROBADO.getEstado());
+		pedidoCliente.saveMe();
+		return pedidoCliente.getNroCliente();
+	}
 	
 }
